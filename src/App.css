@@ -312,3 +312,10 @@ html {
 .app.light .card .text-muted, .app.light .card-body .text-muted, .app.light .card-text .text-muted {
   color: #475569 !important;
 }
+
+@media (max-width: 600px) {
+  .scroll-indicator {
+    bottom: 16px !important;
+    margin-bottom: 0 !important;
+  }
+}

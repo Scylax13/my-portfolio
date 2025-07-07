@@ -185,7 +185,7 @@ const Projects = () => {
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body className="glass">
-                <p className="mb-4">{selectedProject.description}</p>
+                <p className="mb-4" style={{ color: isDarkMode ? '#f9fafb' : '#1a202c' }}>{selectedProject.description}</p>
                 
                 <h6 className="mb-3">Key Features:</h6>
                 <ul className="mb-4">

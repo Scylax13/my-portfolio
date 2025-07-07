@@ -108,7 +108,7 @@ const Hero = () => {
                 border: `2px solid ${isDarkMode ? '#3b82f6' : '#8b5cf6'}`,
                 color: isDarkMode ? '#3b82f6' : '#8b5cf6'
               }}
-              href="/Abhinav_Resume.pdf" 
+              href="/my-portfolio/Abhinav_resume.pdf" 
               download
             >
               Download Resume
@@ -121,7 +121,7 @@ const Hero = () => {
 
         {/* Scroll indicator */}
         <div 
-          className="position-absolute bottom-0 start-50 translate-middle-x mb-4"
+          className="position-absolute bottom-0 start-50 translate-middle-x mb-4 scroll-indicator"
           style={{ animation: 'pulse 2s ease-in-out infinite', zIndex: 3 }}
         >
           <div 
