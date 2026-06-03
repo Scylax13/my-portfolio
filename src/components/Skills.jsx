@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import ThemeContext from '../context/ThemeContext';
 // Placeholder logos
 import reactLogo from '../assets/react.svg';
 import mernLogo from '../assets/tech/mern.png';
@@ -14,64 +13,62 @@ import gcpLogo from '../assets/tech/googlecloud.svg';
 import vibeLogo from '../assets/tech/vibecoding.png';
 
 const Skills = () => {
-  const { isDarkMode } = useContext(ThemeContext);
   const [animatedSkills, setAnimatedSkills] = useState([]);
-  const [isVisible, setIsVisible] = useState(false);
 
-  const skills = [
+  const skills = useMemo(() => [
     { 
       name: 'MERN Stack', 
       level: 80, 
       description: 'MongoDB, Express, React, Node.js',
       logo: mernLogo,
-      color: '#61dafb'
+      color: '#7fa99b'
     },
     { 
       name: 'Node.js', 
       level: 80, 
       description: 'Node.js, Express',
       logo: nodeLogo,
-      color: '#43853d'
+      color: '#8fae82'
     },
     { 
       name: 'Python Scripting', 
       level: 85, 
       description: 'Automation & Data Processing',
       logo: pythonLogo,
-      color: '#3776ab'
+      color: '#7898a5'
     },
     { 
       name: 'Dialogflow CX', 
       level: 95, 
       description: 'Chatbot Development',
       logo: dialogflowLogo,
-      color: '#ff9800'
+      color: '#c9a66b'
     },
     { 
       name: 'Generative AI', 
       level: 75, 
       description: 'Azure OpenAI, Langchain, RAG',
       logo: aiLogo,
-      color: '#ff6b6b'
+      color: '#b98f7c'
     },
     { 
       name: 'Vibe Coding', 
       level: 90, 
       description: 'Coding with Passion & Consistency',
       logo: vibeLogo,
-      color: '#8b5cf6'
+      color: '#9d8f74'
     },
-  ];
+  ], []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
-          // Animate skills one by one
           skills.forEach((skill, index) => {
             setTimeout(() => {
-              setAnimatedSkills(prev => [...prev, skill.name]);
+              setAnimatedSkills(prev => (
+                prev.includes(skill.name) ? prev : [...prev, skill.name]
+              ));
             }, index * 200);
           });
         }
@@ -85,19 +82,10 @@ const Skills = () => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [skills]);
 
-  const SkillCard = ({ skill, index }) => {
-    const [progress, setProgress] = useState(0);
-
-    useEffect(() => {
-      if (animatedSkills.includes(skill.name)) {
-        const timer = setTimeout(() => {
-          setProgress(skill.level);
-        }, index * 100);
-        return () => clearTimeout(timer);
-      }
-    }, [animatedSkills, skill, index]);
+  const SkillCard = ({ skill }) => {
+    const progress = animatedSkills.includes(skill.name) ? skill.level : 0;
 
     return (
       <Col lg={6} md={12} className="mb-4">
@@ -154,9 +142,10 @@ const Skills = () => {
                   key={tagIndex}
                   className="badge me-2 mb-2"
                   style={{
-                    backgroundColor: `${skill.color}20`,
-                    color: skill.color,
-                    fontSize: '0.75rem',
+                      backgroundColor: `${skill.color}20`,
+                      color: skill.color,
+                      border: `1px solid ${skill.color}33`,
+                      fontSize: '0.75rem',
                     padding: '0.5rem 0.75rem'
                   }}
                 >
@@ -192,7 +181,7 @@ const Skills = () => {
 
         <Row>
           {skills.map((skill, index) => (
-            <SkillCard key={index} skill={skill} index={index} />
+            <SkillCard key={index} skill={skill} />
           ))}
         </Row>
 
@@ -206,7 +195,7 @@ const Skills = () => {
                   {otherTechs.map((tech, index) => (
                     <div key={index} className="d-flex flex-column align-items-center p-2">
                       <img src={tech.logo} alt={tech.name} style={{ width: 36, height: 36, marginBottom: 6 }} />
-                      <span style={{ color: isDarkMode ? '#f9fafb' : '#1a202c', fontSize: '0.95rem', fontWeight: 500 }}>{tech.name}</span>
+                      <span style={{ color: 'var(--text)', fontSize: '0.95rem', fontWeight: 500 }}>{tech.name}</span>
                     </div>
                   ))}
                 </div>

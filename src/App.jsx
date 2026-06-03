@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState, createContext } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import './App.css'
 import MyNavbar from './components/Navbar';
 import LoadingSpinner from './components/LoadingSpinner';

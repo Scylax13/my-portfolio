@@ -1,12 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
-import ThemeContext from '../context/ThemeContext';
 import linkedinLogo from '../assets/tech/linkedin.svg';
 import githubLogo from '../assets/tech/github.svg';
 import instagramLogo from '../assets/tech/instagram.png';
 
 const Contact = () => {
-  const { isDarkMode } = useContext(ThemeContext);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,8 +26,7 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setShowError(false);
-    // Use Formspree for email sending
-    const formUrl = 'https://formspree.io/f/xdoqzqzq'; // Replace with your Formspree endpoint if needed
+    const formUrl = 'https://formspree.io/f/xdoqzqzq';
     try {
       const response = await fetch(formUrl, {
         method: 'POST',
@@ -51,19 +48,19 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: '📧',
+      label: 'Email',
       title: 'Email',
       value: 'pratapabhi1999@gmail.com',
       link: 'mailto:pratapabhi1999@gmail.com'
     },
     {
-      icon: '📱',
+      label: 'Phone',
       title: 'Phone',
       value: '7985102382',
       link: 'tel:7985102382'
     },
     {
-      icon: '📍',
+      label: 'Location',
       title: 'Location',
       value: 'Mumbai, India',
       link: '#'
@@ -75,6 +72,12 @@ const Contact = () => {
     { logo: githubLogo, alt: 'GitHub', url: 'https://github.com/Scylax13' },
     { logo: instagramLogo, alt: 'Instagram', url: 'https://www.instagram.com/scy_abhinav/' }
   ];
+
+  const inputStyle = {
+    backgroundColor: 'var(--surface-card-strong)',
+    border: '1px solid var(--border)',
+    color: 'var(--text)'
+  };
 
   return (
     <section id="contact" className="py-5">
@@ -95,18 +98,14 @@ const Contact = () => {
         )}
         <Row className="g-4">
           <Col lg={4} className="mb-4">
-            <div className="glass p-4 h-100">
+            <div className="glass p-4 h-100 text-start">
               <h4 className="mb-4">Contact Information</h4>
-              {contactInfo.map((info, index) => (
-                <div key={index} className="d-flex align-items-center mb-3">
-                  <span className="fs-3 me-3">{info.icon}</span>
+              {contactInfo.map((info) => (
+                <div key={info.title} className="d-flex align-items-center mb-3">
+                  <span className="project-icon me-3" style={{ fontSize: '0.72rem' }}>{info.label.slice(0, 2).toUpperCase()}</span>
                   <div>
                     <h6 className="mb-1">{info.title}</h6>
-                    <a 
-                      href={info.link} 
-                      className="text-decoration-none"
-                      style={{ color: isDarkMode ? '#60a5fa' : '#3b82f6' }}
-                    >
+                    <a href={info.link} className="text-decoration-none">
                       {info.value}
                     </a>
                   </div>
@@ -114,10 +113,10 @@ const Contact = () => {
               ))}
               <div className="mt-4">
                 <h6 className="mb-3">Follow Me</h6>
-                <div className="d-flex justify-content-center gap-4">
-                  {socialLinks.map((social, idx) => (
-                    <a key={idx} href={social.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none">
-                      <img src={social.logo} alt={social.alt} style={{ width: 32, height: 32, borderRadius: 6 }} />
+                <div className="d-flex gap-4">
+                  {socialLinks.map((social) => (
+                    <a key={social.alt} href={social.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none">
+                      <img src={social.logo} alt={social.alt} style={{ width: 30, height: 30, borderRadius: 6 }} />
                     </a>
                   ))}
                 </div>
@@ -125,7 +124,7 @@ const Contact = () => {
             </div>
           </Col>
           <Col lg={8}>
-            <div className="glass p-4">
+            <div className="glass p-4 text-start">
               <Form onSubmit={handleSubmit} method="POST">
                 <Row>
                   <Col md={6}>
@@ -137,11 +136,7 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="border-0"
-                        style={{ 
-                          backgroundColor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
-                          color: isDarkMode ? '#ffffff' : '#1e293b'
-                        }}
+                        style={inputStyle}
                       />
                     </Form.Group>
                   </Col>
@@ -154,11 +149,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="border-0"
-                        style={{ 
-                          backgroundColor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
-                          color: isDarkMode ? '#ffffff' : '#1e293b'
-                        }}
+                        style={inputStyle}
                       />
                     </Form.Group>
                   </Col>
@@ -171,11 +162,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="border-0"
-                    style={{ 
-                      backgroundColor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
-                      color: isDarkMode ? '#ffffff' : '#1e293b'
-                    }}
+                    style={inputStyle}
                   />
                 </Form.Group>
                 <Form.Group className="mb-4">
@@ -187,15 +174,11 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="border-0"
-                    style={{ 
-                      backgroundColor: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
-                      color: isDarkMode ? '#ffffff' : '#1e293b'
-                    }}
+                    style={inputStyle}
                   />
                 </Form.Group>
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="btn-modern w-100"
                   disabled={isSubmitting}
                 >
@@ -210,4 +193,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;
