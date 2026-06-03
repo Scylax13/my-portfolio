@@ -1,12 +1,91 @@
-# React + Vite
+# Abhinav Singh Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio website built with React and Vite. It highlights Abhinav Singh's profile, skills, projects, experience, resume, and contact details in a polished responsive interface with dark and light theme support.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Responsive single-page portfolio layout
+- Classy dark and light theme toggle
+- Animated hero role text
+- About, education, achievements, skills, projects, experience, and contact sections
+- Project detail modal interactions
+- Resume download link
+- Contact form powered by Formspree
+- Production build and GitHub Pages deployment support
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19
+- Vite
+- React Bootstrap
+- Bootstrap 5
+- ESLint
+- GitHub Pages
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Open the local app:
+
+```text
+http://127.0.0.1:5173/my-portfolio/
+```
+
+## Available Scripts
+
+Run locally:
+
+```bash
+npm run dev
+```
+
+Check linting:
+
+```bash
+npm run lint
+```
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+Deploy to GitHub Pages:
+
+```bash
+npm run deploy
+```
+
+## Project Structure
+
+```text
+src/
+  components/      Portfolio sections and UI components
+  context/         Theme context
+  hooks/           Custom typing animation hook
+  assets/          Profile image and technology assets
+```
+
+## Notes
+
+- The resume file is served from `public/Abhinav_resume.pdf`.
+- The contact form endpoint is configured in `src/components/Contact.jsx`.
+- The site is configured for GitHub Pages deployment through the `homepage` and `gh-pages` settings.
