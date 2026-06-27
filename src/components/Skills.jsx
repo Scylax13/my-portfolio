@@ -10,52 +10,51 @@ import dialogflowLogo from '../assets/tech/dialogflowcx.png';
 import aiLogo from '../assets/tech/ai.png';
 import twilioLogo from '../assets/tech/twilio.svg';
 import gcpLogo from '../assets/tech/googlecloud.svg';
-import vibeLogo from '../assets/tech/vibecoding.png';
 
 const Skills = () => {
   const [animatedSkills, setAnimatedSkills] = useState([]);
 
   const skills = useMemo(() => [
-    { 
-      name: 'MERN Stack', 
-      level: 80, 
-      description: 'MongoDB, Express, React, Node.js',
-      logo: mernLogo,
-      color: '#7fa99b'
-    },
-    { 
-      name: 'Node.js', 
-      level: 80, 
-      description: 'Node.js, Express',
-      logo: nodeLogo,
-      color: '#8fae82'
-    },
-    { 
-      name: 'Python Scripting', 
-      level: 85, 
-      description: 'Automation & Data Processing',
-      logo: pythonLogo,
-      color: '#7898a5'
-    },
-    { 
-      name: 'Dialogflow CX', 
-      level: 95, 
-      description: 'Chatbot Development',
-      logo: dialogflowLogo,
-      color: '#c9a66b'
-    },
-    { 
-      name: 'Generative AI', 
-      level: 75, 
-      description: 'Azure OpenAI, Langchain, RAG',
+    {
+      name: 'Generative AI & LLMs',
+      level: 90,
+      description: 'Azure OpenAI, LLM Integration, Prompt Engineering',
       logo: aiLogo,
       color: '#b98f7c'
     },
-    { 
-      name: 'Vibe Coding', 
-      level: 90, 
-      description: 'Coding with Passion & Consistency',
-      logo: vibeLogo,
+    {
+      name: 'Agentic Systems & MCP',
+      level: 88,
+      description: 'Multi-Agent Systems, Model Context Protocol, Orchestration',
+      logo: aiLogo,
+      color: '#c9a66b'
+    },
+    {
+      name: 'RAG Pipelines',
+      level: 88,
+      description: 'Ingestion, Chunking, Embedding, Retrieval',
+      logo: aiLogo,
+      color: '#7898a5'
+    },
+    {
+      name: 'LangChain',
+      level: 85,
+      description: 'Chains, Agents, Tooling, Memory',
+      logo: aiLogo,
+      color: '#7fa99b'
+    },
+    {
+      name: 'Python',
+      level: 88,
+      description: 'AI Pipelines, Backends, Automation',
+      logo: pythonLogo,
+      color: '#8fae82'
+    },
+    {
+      name: 'Conversational AI',
+      level: 92,
+      description: 'Dialogflow CX, IVR, Chatbots',
+      logo: dialogflowLogo,
       color: '#9d8f74'
     },
   ], []);
@@ -161,14 +160,15 @@ const Skills = () => {
 
   // Other Technologies with logos
   const otherTechs = [
-    { name: 'React', logo: reactLogo },
-    { name: 'MongoDB', logo: mongoLogo },
-    { name: 'Python', logo: pythonLogo },
-    { name: 'Twilio', logo: twilioLogo },
+    { name: 'Azure OpenAI', logo: aiLogo },
     { name: 'Google Cloud', logo: gcpLogo },
+    { name: 'Python', logo: pythonLogo },
     { name: 'Dialogflow CX', logo: dialogflowLogo },
-    { name: 'Generative AI', logo: aiLogo },
-    { name: 'Vibe Coding', logo: vibeLogo },
+    { name: 'Twilio', logo: twilioLogo },
+    { name: 'React', logo: reactLogo },
+    { name: 'Node.js', logo: nodeLogo },
+    { name: 'MongoDB', logo: mongoLogo },
+    { name: 'MERN Stack', logo: mernLogo },
   ];
 
   return (

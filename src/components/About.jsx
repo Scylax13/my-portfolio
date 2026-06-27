@@ -6,9 +6,7 @@ import mongoLogo from '../assets/tech/mongodb.svg';
 import pythonLogo from '../assets/tech/python.svg';
 import dialogflowLogo from '../assets/tech/dialogflowcx.png';
 import aiLogo from '../assets/tech/ai.png';
-import twilioLogo from '../assets/tech/twilio.svg';
 import gcpLogo from '../assets/tech/googlecloud.svg';
-import vibeLogo from '../assets/tech/vibecoding.png';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,29 +26,26 @@ const About = () => {
   }, []);
 
   const education = [
-    { degree: 'MCA', institution: 'Chandigarh University', gpa: '8.0 GPA' },
-    { degree: 'BCA', institution: 'Dr. VSICS', gpa: '' },
-    { degree: '12th', institution: 'Army Public School', gpa: '88.88%' }
+    { degree: 'Master of Computer Applications (MCA)', institution: 'Chandigarh University · 2021 – 2023', gpa: 'CGPA 8.0' },
+    { degree: 'Bachelor of Computer Applications (BCA)', institution: 'Dr. VSICS, Kanpur · 2018 – 2021', gpa: '71.77%' }
   ];
 
   const achievements = [
-    'Built a MERN stack Expense Tracker app for personal finance management',
-    'Developed IVR-based chatbot handling 1000+ daily interactions',
-    'Implemented RAG approach reducing response time by 40%',
-    'Deployed applications on Azure Cloud Platform (familiarity)',
-    'Achieved 95% customer satisfaction with chatbot solutions'
+    'Designed and deployed a production-grade multi-agent AI system for an enterprise client',
+    'Integrated Model Context Protocol (MCP) as the agent-to-tool communication layer in a microservices ecosystem',
+    'Engineered end-to-end RAG pipelines — ingestion, chunking, embedding, and retrieval — for document-grounded LLM responses',
+    'Built a production Generative AI chatbot on Azure OpenAI + LangChain with full RAG architecture',
+    'Applied systematic prompt and context engineering to improve output consistency and reduce hallucinations'
   ];
 
   const competencies = [
+    { name: 'Generative AI', logo: aiLogo },
+    { name: 'Python', logo: pythonLogo },
+    { name: 'Dialogflow CX', logo: dialogflowLogo },
+    { name: 'Google Cloud', logo: gcpLogo },
     { name: 'React', logo: reactLogo },
     { name: 'Node.js', logo: nodeLogo },
     { name: 'MongoDB', logo: mongoLogo },
-    { name: 'Python', logo: pythonLogo },
-    { name: 'Dialogflow CX', logo: dialogflowLogo },
-    { name: 'Generative AI', logo: aiLogo },
-    { name: 'Twilio', logo: twilioLogo },
-    { name: 'Google Cloud', logo: gcpLogo },
-    { name: 'Vibe Coding', logo: vibeLogo },
   ];
 
   return (
@@ -58,7 +53,7 @@ const About = () => {
       <Container>
         <div className="text-center mb-5">
           <h2 className="gradient-text display-4 fw-bold mb-3">About Me</h2>
-          <p className="lead">Passionate software engineer with expertise in modern technologies</p>
+          <p className="lead">Senior AI Engineer building production-grade Generative AI and agentic systems</p>
         </div>
         <Row className="align-items-center g-4">
           <Col lg={12}>
@@ -66,13 +61,15 @@ const About = () => {
               <div className="glass p-4 mb-4 text-start">
                 <h4 className="mb-3">Hello there</h4>
                 <p className="mb-3">
-                  I am <strong>Abhinav Singh</strong>, a passionate Software Engineer with close to 2 years of experience building
-                  innovative solutions using cutting-edge technologies. I specialize in creating intelligent chatbots,
-                  developing full-stack applications, and implementing AI-powered solutions that solve real-world problems.
+                  I am <strong>Abhinav Pratap Singh</strong>, a <strong>Senior AI Engineer</strong> with 2.5 years of experience
+                  designing and deploying production-grade Generative AI systems. I build multi-agent architectures, RAG
+                  pipelines, and agentic workflows using <strong>LangChain</strong>, <strong>Azure OpenAI</strong>, and the
+                  <strong> Model Context Protocol (MCP)</strong>.
                 </p>
                 <p className="mb-0">
-                  With expertise in <strong>MERN Stack</strong>, <strong>Generative AI</strong>, <strong>Dialogflow CX</strong>, and <strong>Python</strong>,
-                  I enjoy experimenting with modern technologies and turning complex ideas into elegant, user-friendly applications.
+                  I focus on prompt and context engineering to optimize LLM behavior at scale and on integrating AI capabilities
+                  into microservices-based backends. A complementary full-stack background in <strong>Python</strong> and the
+                  <strong> MERN stack</strong> lets me deliver intelligent products end to end.
                 </p>
               </div>
               <Row className="g-3">

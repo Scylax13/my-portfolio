@@ -10,6 +10,7 @@ const About = lazy(() => import('./components/About'));
 const Skills = lazy(() => import('./components/Skills'));
 const Projects = lazy(() => import('./components/Project'));
 const Experience = lazy(() => import('./components/Experience'));
+const Certifications = lazy(() => import('./components/Certifications'));
 const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
@@ -27,8 +28,9 @@ function App() {
           <Hero />
           <About />
           <Skills />
-          <Projects />
           <Experience />
+          <Projects />
+          <Certifications />
           <Contact />
         </Suspense>
       </div>

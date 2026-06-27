@@ -9,49 +9,49 @@ const Projects = () => {
 
   const projects = [
     {
+      title: 'Multi-Agent AI System',
+      description: 'Architected and deployed a production-grade multi-agent AI system for an enterprise client, enabling autonomous task decomposition, delegation, and execution across specialized agents — significantly reducing manual intervention in complex workflows.',
+      shortDescription: 'Autonomous multi-agent orchestration with MCP',
+      technologies: ['Multi-Agent Systems', 'MCP', 'LangChain', 'Python', 'Microservices'],
+      image: 'AGT',
+      color: '#c9a66b',
+      features: [
+        'Autonomous task decomposition, delegation, and execution',
+        'Model Context Protocol (MCP) as the agent-to-tool communication layer',
+        'Scalable, maintainable agentic architecture within a microservices ecosystem',
+        'Prompt and context engineering for consistent, low-hallucination output'
+      ],
+      link: '#',
+      github: '#'
+    },
+    {
+      title: 'Generative AI RAG Chatbot',
+      description: 'Built a production-ready Generative AI chatbot using Azure OpenAI and LangChain, implementing a full RAG architecture from dataset preparation to cloud deployment on Azure — delivering context-aware, knowledge-grounded conversational AI.',
+      shortDescription: 'Knowledge-grounded chatbot with full RAG pipeline',
+      technologies: ['Azure OpenAI', 'LangChain', 'RAG', 'Python', 'Azure Cloud'],
+      image: 'RAG',
+      color: '#b98f7c',
+      features: [
+        'End-to-end RAG pipeline: ingestion, chunking, embedding, retrieval',
+        'Context-aware, document-grounded responses',
+        'Custom prompt engineering for reliability',
+        'Scalable cloud deployment on Azure'
+      ],
+      link: '#',
+      github: '#'
+    },
+    {
       title: 'Dialogflow CX IVR Chatbot',
-      description: 'Designed and developed a fully functional IVR-based chatbot using Dialogflow CX for efficient call handling and customer service automation.',
-      shortDescription: 'IVR-based chatbot for customer service automation',
-      technologies: ['Dialogflow CX', 'Python', 'Google Cloud', 'IVR'],
+      description: 'Designed and developed an IVR-based conversational chatbot using Dialogflow CX to automate customer interaction flows, reducing dependency on live agents for routine queries.',
+      shortDescription: 'Conversational IVR automation on Dialogflow CX',
+      technologies: ['Dialogflow CX', 'Google Cloud', 'Python', 'IVR'],
       image: 'CX',
       color: '#7fa99b',
       features: [
-        'Natural language processing for customer queries',
-        'Multi-language support',
-        'Integration with CRM systems',
-        'Analytics and reporting dashboard'
-      ],
-      link: '#',
-      github: '#'
-    },
-    {
-      title: 'Generative AI Chatbot',
-      description: 'Built an advanced chatbot utilizing Azure OpenAI, Langchain, and RAG approach for context-aware responses with Azure deployment.',
-      shortDescription: 'AI-powered chatbot with context awareness',
-      technologies: ['Azure OpenAI', 'Langchain', 'Python', 'RAG', 'Azure Cloud'],
-      image: 'AI',
-      color: '#c9a66b',
-      features: [
-        'Context-aware conversations using RAG',
-        'Integration with Azure OpenAI services',
-        'Custom prompt engineering',
-        'Scalable cloud deployment'
-      ],
-      link: '#',
-      github: '#'
-    },
-    {
-      title: 'Expense Tracker',
-      description: 'Developed a MERN stack Expense Tracker web application for personal finance management, demonstrating CRUD operations, REST API integrations, and user authentication.',
-      shortDescription: 'MERN stack expense tracker for personal finance',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
-      image: 'ET',
-      color: '#b98f7c',
-      features: [
-        'Track income and expenses',
-        'User authentication and dashboard',
-        'RESTful API design',
-        'Responsive design'
+        'Natural language understanding for customer queries',
+        'Automated multi-turn interaction flows',
+        'Reduced live-agent dependency for routine queries',
+        'Integration with telephony and backend services'
       ],
       link: '#',
       github: '#'

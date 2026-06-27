@@ -6,18 +6,32 @@ const Experience = () => {
 
   const experiences = [
     {
-      role: 'Software Engineer',
-      company: 'Accenture',
-      duration: 'close to 2 years',
-      period: '2022 - Present',
+      role: 'Senior AI Developer',
+      company: 'HCLTech',
+      duration: 'Current',
+      period: 'Nov 2025 - Present',
       description: [
-        'Developed IVR-based Chatbot using Dialogflow CX for customer interaction flows.',
-        'Built a Generative AI Chatbot using Azure OpenAI, Langchain & RAG approach, including prompt engineering and dataset preparation.',
-        'Deployed and managed solutions on Azure Cloud (familiarity, not expertise).',
-        'Worked on automation testing, daily deployments, and pipeline management.',
+        'Designed and deployed a production-grade multi-agent AI system for an enterprise client, enabling autonomous task decomposition, delegation, and execution across specialized agents.',
+        'Integrated Model Context Protocol (MCP) as the communication layer between agents and external tools/services within a microservices ecosystem.',
+        'Engineered end-to-end RAG pipelines — ingestion, chunking, embedding, and retrieval — to deliver accurate, document-grounded LLM responses for high-stakes use cases.',
+        'Applied systematic prompt and context engineering to govern LLM behavior across agents, improving output consistency and reducing hallucinations in production.',
       ],
-      icon: 'EXP',
+      icon: 'HCL',
       color: '#c9a66b'
+    },
+    {
+      role: 'Application Development Associate',
+      company: 'Accenture',
+      duration: '2 years',
+      period: 'Nov 2023 - Nov 2025',
+      description: [
+        'Built a production-ready Generative AI chatbot using Azure OpenAI and LangChain, implementing a full RAG architecture from dataset preparation to cloud deployment on Azure.',
+        'Designed and developed an IVR-based chatbot on Dialogflow CX to automate customer interaction flows and reduce dependency on live agents.',
+        'Owned CI/CD pipeline management and daily deployments, maintaining release reliability through automation testing.',
+        'Partnered with design and product teams to translate business requirements into AI-driven features across the full delivery lifecycle.',
+      ],
+      icon: 'ACN',
+      color: '#7fa99b'
     }
   ];
 

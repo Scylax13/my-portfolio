@@ -7,10 +7,10 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const roles = useMemo(() => [
-    { mark: 'DEV', label: 'Software Engineer' },
-    { mark: 'MERN', label: 'MERN Stack Developer' },
-    { mark: 'AI', label: 'Generative AI Enthusiast' },
-    { mark: 'SOLVE', label: 'Problem Solver' }
+    { mark: 'AI', label: 'Senior AI Engineer' },
+    { mark: 'GEN', label: 'Generative AI Engineer' },
+    { mark: 'AGENT', label: 'Agentic Systems Builder' },
+    { mark: 'RAG', label: 'RAG & LLM Specialist' }
   ], []);
 
   const roleLabels = useMemo(() => roles.map((role) => role.label), [roles]);
@@ -85,11 +85,16 @@ const Hero = () => {
         </div>
 
         <div className={`slide-in-right ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.6s' }}>
-          <p className="lead fs-4 mb-4" style={{ minHeight: '2rem' }}>
+          <p className="lead fs-4 mb-3" style={{ minHeight: '2rem' }}>
             <span className="typed-role">
               <span className="typed-role-mark">{activeRole.mark}</span>
               <span>{typedText}</span>
             </span>
+          </p>
+          <p className="mb-4 mx-auto" style={{ maxWidth: '640px', opacity: 0.85 }}>
+            Designing and deploying production-grade Generative AI systems — multi-agent
+            architectures, RAG pipelines, and agentic workflows powered by LangChain,
+            Azure OpenAI, and the Model Context Protocol.
           </p>
         </div>
 
