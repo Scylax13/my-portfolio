@@ -52,7 +52,8 @@ const Experience = () => {
   return (
     <section id="experience" className="py-5">
       <Container>
-        <div className="text-center mb-5">
+        <div className="text-center mb-5 reveal">
+          <div className="section-tag font-mono">experience<span className="caret" /></div>
           <h2 className="gradient-text display-4 fw-bold mb-3">Experience</h2>
           <p className="lead">Professional journey and impactful roles</p>
         </div>
@@ -62,7 +63,8 @@ const Experience = () => {
               {experiences.map((exp, idx) => (
                 <div
                   key={idx}
-                  className={`timeline-item mb-5 fade-in ${isVisible ? 'visible' : ''}`}
+                  className={`timeline-item mb-5 fade-in reveal ${isVisible ? 'visible' : ''}`}
+                  data-reveal-delay={idx * 120}
                   style={{ animationDelay: `${idx * 0.2}s` }}
                 >
                   <div className="d-flex align-items-center mb-2">

@@ -51,14 +51,15 @@ const About = () => {
   return (
     <section id="about" className="py-5">
       <Container>
-        <div className="text-center mb-5">
+        <div className="text-center mb-5 reveal">
+          <div className="section-tag font-mono">about<span className="caret" /></div>
           <h2 className="gradient-text display-4 fw-bold mb-3">About Me</h2>
           <p className="lead">Senior AI Engineer building production-grade Generative AI and agentic systems</p>
         </div>
         <Row className="align-items-center g-4">
           <Col lg={12}>
             <div className={`slide-in-right ${isVisible ? 'visible' : ''}`}>
-              <div className="glass p-4 mb-4 text-start">
+              <div className="glass p-4 mb-4 text-start reveal tilt">
                 <h4 className="mb-3">Hello there</h4>
                 <p className="mb-3">
                   I am <strong>Abhinav Pratap Singh</strong>, a <strong>Senior AI Engineer</strong> with 2.5 years of experience
@@ -74,7 +75,7 @@ const About = () => {
               </div>
               <Row className="g-3">
                 <Col md={6}>
-                  <Card className="h-100 glass text-start">
+                  <Card className="h-100 glass text-start reveal tilt" data-reveal-delay="80">
                     <Card.Body className="p-4">
                       <h5 className="mb-3 d-flex align-items-center">Education</h5>
                       {education.map((edu, index) => (
@@ -96,7 +97,7 @@ const About = () => {
                   </Card>
                 </Col>
                 <Col md={6}>
-                  <Card className="h-100 glass text-start">
+                  <Card className="h-100 glass text-start reveal tilt" data-reveal-delay="160">
                     <Card.Body className="p-4">
                       <h5 className="mb-3 d-flex align-items-center">Key Achievements</h5>
                       <ul className="list-unstyled">
@@ -117,7 +118,7 @@ const About = () => {
         <Row className="mt-5">
           <Col md={12}>
             <div className={`fade-in ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.6s' }}>
-              <Card className="glass">
+              <Card className="glass reveal">
                 <Card.Body className="p-4">
                   <h4 className="text-center mb-4">Core Competencies</h4>
                   <div className="d-flex flex-wrap justify-content-center align-items-center gap-4">

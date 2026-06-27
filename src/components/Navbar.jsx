@@ -40,10 +40,12 @@ const MyNavbar = () => {
       <Container>
         <Navbar.Brand
           href="#home"
-          className="fw-bold gradient-text"
-          style={{ fontSize: '1.35rem', letterSpacing: 0 }}
+          className="fw-bold font-mono d-flex align-items-center"
+          style={{ fontSize: '1.1rem', letterSpacing: 0, gap: '0.4rem' }}
         >
-          Abhinav Singh
+          <span style={{ color: 'var(--accent)' }}>$</span>
+          <span className="gradient-text">abhinav</span>
+          <span style={{ color: 'var(--muted)' }}>~/ai</span>
         </Navbar.Brand>
 
         <Navbar.Toggle
@@ -60,9 +62,10 @@ const MyNavbar = () => {
               <Nav.Link
                 key={index}
                 href={link.href}
-                className="mx-2 position-relative"
+                className="mx-2 position-relative font-mono"
                 style={{
                   color: 'var(--text)',
+                  fontSize: '0.85rem',
                   transition: 'all 0.25s ease'
                 }}
               >

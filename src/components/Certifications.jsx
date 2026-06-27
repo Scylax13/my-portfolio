@@ -43,7 +43,8 @@ const Certifications = () => {
   return (
     <section id="certifications" className="py-5">
       <Container>
-        <div className="text-center mb-5">
+        <div className="text-center mb-5 reveal">
+          <div className="section-tag font-mono">certifications<span className="caret" /></div>
           <h2 className="gradient-text display-4 fw-bold mb-3">Certifications</h2>
           <p className="lead">Credentials validating my AI and cloud expertise</p>
         </div>
@@ -51,7 +52,8 @@ const Certifications = () => {
           {certifications.map((cert, idx) => (
             <Col lg={4} md={6} className="mb-4" key={idx}>
               <Card
-                className={`h-100 glass fade-in ${isVisible ? 'visible' : ''}`}
+                className={`h-100 glass reveal tilt fade-in ${isVisible ? 'visible' : ''}`}
+                data-reveal-delay={idx * 110}
                 style={{ animationDelay: `${idx * 0.15}s` }}
               >
                 <Card.Body className="p-4 d-flex flex-column">

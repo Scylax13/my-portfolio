@@ -83,12 +83,12 @@ const Skills = () => {
     return () => observer.disconnect();
   }, [skills]);
 
-  const SkillCard = ({ skill }) => {
+  const SkillCard = ({ skill, index = 0 }) => {
     const progress = animatedSkills.includes(skill.name) ? skill.level : 0;
 
     return (
       <Col lg={6} md={12} className="mb-4">
-        <Card className="h-100 glass skill-card">
+        <Card className="h-100 glass skill-card reveal tilt" data-reveal-delay={(index % 2) * 90}>
           <Card.Body className="p-4">
             <div className="d-flex align-items-center mb-3">
               <img src={skill.logo} alt={skill.name} style={{ width: 32, height: 32, marginRight: 12 }} />
@@ -174,21 +174,22 @@ const Skills = () => {
   return (
     <section id="skills" className="py-5">
       <Container>
-        <div className="text-center mb-5">
+        <div className="text-center mb-5 reveal">
+          <div className="section-tag font-mono">skills<span className="caret" /></div>
           <h2 className="gradient-text display-4 fw-bold mb-3">Skills & Expertise</h2>
-          <p className="lead">Technologies and tools I work with</p>
+          <p className="lead">The AI stack I build production systems with</p>
         </div>
 
         <Row>
           {skills.map((skill, index) => (
-            <SkillCard key={index} skill={skill} />
+            <SkillCard key={index} skill={skill} index={index} />
           ))}
         </Row>
 
         {/* Other Technologies with logos */}
         <Row className="mt-5">
           <Col md={12}>
-            <Card className="glass">
+            <Card className="glass reveal">
               <Card.Body className="p-4">
                 <h4 className="text-center mb-4">Other Technologies</h4>
                 <div className="d-flex flex-wrap justify-content-center gap-4">

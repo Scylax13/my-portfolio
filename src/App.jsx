@@ -1,40 +1,42 @@
-import { lazy, Suspense, useState } from 'react';
-import './App.css'
-import MyNavbar from './components/Navbar';
-import LoadingSpinner from './components/LoadingSpinner';
-import ThemeContext from './context/ThemeContext';
-
-// Lazy load components for better performance
-const Hero = lazy(() => import('./components/hero'));
-const About = lazy(() => import('./components/About'));
-const Skills = lazy(() => import('./components/Skills'));
-const Projects = lazy(() => import('./components/Project'));
-const Experience = lazy(() => import('./components/Experience'));
-const Certifications = lazy(() => import('./components/Certifications'));
-const Contact = lazy(() => import('./components/Contact'));
+import './styles/theme.css';
+import CursorGlow from './components/CursorGlow';
+import Progress from './components/Progress';
+import SiteNav from './components/SiteNav';
+import HeroSection from './components/HeroSection';
+import Marquee from './components/Marquee';
+import AboutSection from './components/AboutSection';
+import SkillsSection from './components/SkillsSection';
+import ExperienceSection from './components/ExperienceSection';
+import ProjectsSection from './components/ProjectsSection';
+import CertsSection from './components/CertsSection';
+import ContactSection from './components/ContactSection';
+import SiteFooter from './components/SiteFooter';
+import { useGlobalFX } from './hooks/effects';
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  useGlobalFX();
 
   return (
-    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
-      <div className={`app ${isDarkMode ? 'dark' : 'light'}`}>
-        <MyNavbar />
-        <Suspense fallback={<LoadingSpinner />}>
-          <Hero />
-          <About />
-          <Skills />
-          <Experience />
-          <Projects />
-          <Certifications />
-          <Contact />
-        </Suspense>
-      </div>
-    </ThemeContext.Provider>
+    <>
+      <h2 className="sr-only">
+        Portfolio of Abhinav Pratap Singh, Senior AI Engineer specializing in generative AI,
+        multi-agent systems, RAG pipelines, and agentic workflows.
+      </h2>
+      <CursorGlow />
+      <Progress />
+      <SiteNav />
+      <main>
+        <HeroSection />
+        <Marquee />
+        <AboutSection />
+        <SkillsSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <CertsSection />
+        <ContactSection />
+      </main>
+      <SiteFooter />
+    </>
   );
 }
 

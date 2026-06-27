@@ -63,10 +63,11 @@ const Projects = () => {
     setShowModal(true);
   };
 
-  const ProjectCard = ({ project }) => (
+  const ProjectCard = ({ project, index = 0 }) => (
     <Col lg={4} md={6} className="mb-4">
       <Card
-        className="h-100 project-card glass"
+        className="h-100 project-card glass reveal tilt"
+        data-reveal-delay={index * 110}
         style={{ cursor: 'pointer' }}
         onClick={() => handleProjectClick(project)}
       >
@@ -104,7 +105,11 @@ const Projects = () => {
             </div>
           </div>
 
-          <div className="mt-auto" />
+          <div className="mt-auto text-center">
+            <span className="font-mono" style={{ fontSize: '0.74rem', color: 'var(--accent)' }}>
+              › view details
+            </span>
+          </div>
         </Card.Body>
       </Card>
     </Col>
@@ -113,14 +118,15 @@ const Projects = () => {
   return (
     <section id="projects" className="py-5">
       <Container>
-        <div className="text-center mb-5">
+        <div className="text-center mb-5 reveal">
+          <div className="section-tag font-mono">projects<span className="caret" /></div>
           <h2 className="gradient-text display-4 fw-bold mb-3">Featured Projects</h2>
-          <p className="lead">Some of my recent work and personal projects</p>
+          <p className="lead">Production AI systems I've designed and shipped</p>
         </div>
 
         <Row>
           {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </Row>
 

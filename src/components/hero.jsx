@@ -69,11 +69,17 @@ const Hero = () => {
       </div>
 
       <Container className="text-center position-relative d-flex flex-column justify-content-center align-items-center hero-content" style={{ zIndex: 2 }}>
+        <div className={`fade-in ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.1s' }}>
+          <span className="status-pill mb-4 d-inline-flex">
+            <span className="live" /> available for senior AI roles
+          </span>
+        </div>
+
         <div className={`fade-in ${isVisible ? 'visible' : ''}`}>
           <img
             src={profilePic}
             alt="Abhinav Singh"
-            className="rounded-circle float mb-4 profile-portrait"
+            className="float mb-4 profile-portrait"
           />
         </div>
 
@@ -91,11 +97,16 @@ const Hero = () => {
               <span>{typedText}</span>
             </span>
           </p>
-          <p className="mb-4 mx-auto" style={{ maxWidth: '640px', opacity: 0.85 }}>
-            Designing and deploying production-grade Generative AI systems — multi-agent
-            architectures, RAG pipelines, and agentic workflows powered by LangChain,
-            Azure OpenAI, and the Model Context Protocol.
-          </p>
+        </div>
+
+        <div className={`fade-in ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.75s' }}>
+          <div className="hero-terminal">
+            <div className="bar"><span /><span /><span /></div>
+            <div className="row"><span className="c-key">role</span>: <span className="c-val">"Senior AI Engineer"</span>,</div>
+            <div className="row"><span className="c-key">focus</span>: <span className="c-val">["multi-agent", "RAG", "MCP", "LangChain"]</span>,</div>
+            <div className="row"><span className="c-key">stack</span>: <span className="c-val">["Azure OpenAI", "Python", "microservices"]</span>,</div>
+            <div className="row"><span className="c-key">experience</span>: <span className="c-val">"2.5 years in production GenAI"</span></div>
+          </div>
         </div>
 
         <div className={`fade-in ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.9s' }}>

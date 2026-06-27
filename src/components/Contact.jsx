@@ -82,9 +82,10 @@ const Contact = () => {
   return (
     <section id="contact" className="py-5">
       <Container>
-        <div className="text-center mb-5">
+        <div className="text-center mb-5 reveal">
+          <div className="section-tag font-mono">contact<span className="caret" /></div>
           <h2 className="gradient-text display-4 fw-bold mb-3">Get In Touch</h2>
-          <p className="lead">Let's discuss your next project or just say hello!</p>
+          <p className="lead">Let's build something intelligent together</p>
         </div>
         {showSuccess && (
           <Alert variant="success" className="mb-4" dismissible onClose={() => setShowSuccess(false)}>
@@ -98,7 +99,7 @@ const Contact = () => {
         )}
         <Row className="g-4">
           <Col lg={4} className="mb-4">
-            <div className="glass p-4 h-100 text-start">
+            <div className="glass p-4 h-100 text-start reveal">
               <h4 className="mb-4">Contact Information</h4>
               {contactInfo.map((info) => (
                 <div key={info.title} className="d-flex align-items-center mb-3">
@@ -124,7 +125,7 @@ const Contact = () => {
             </div>
           </Col>
           <Col lg={8}>
-            <div className="glass p-4 text-start">
+            <div className="glass p-4 text-start reveal" data-reveal-delay="100">
               <Form onSubmit={handleSubmit} method="POST">
                 <Row>
                   <Col md={6}>
