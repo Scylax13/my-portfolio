@@ -243,7 +243,46 @@ h1, h2, h3, h4 { font-family: 'Sora', sans-serif; font-weight: 700; line-height:
   font-family: 'JetBrains Mono', monospace;
 }
 .nav-links a:hover { color: var(--ink); background: var(--panel); }
-@media (max-width: 760px) { .nav-links .hide-sm { display: none; } }
+.nav-links a.active { color: var(--ink); background: var(--panel); }
+.nav-links a.active::after {
+  content: ""; display: block; height: 2px; margin-top: 3px; border-radius: 9px; background: var(--grad);
+}
+
+/* hamburger (hidden on desktop) */
+.nav-burger { display: none; width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--line-2); background: var(--panel); position: relative; }
+.nav-burger span { position: absolute; left: 10px; right: 10px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s var(--ease), opacity 0.2s ease; }
+.nav-burger span:first-child { top: 15px; }
+.nav-burger span:last-child { bottom: 15px; }
+.nav-burger span.x:first-child { transform: translateY(4px) rotate(45deg); }
+.nav-burger span.x:last-child { transform: translateY(-4px) rotate(-45deg); }
+
+/* mobile sheet */
+.nav-sheet { position: fixed; inset: 0; top: 0; z-index: 99; background: rgba(7,6,15,0.6); backdrop-filter: blur(8px); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.nav-sheet.show { opacity: 1; pointer-events: auto; }
+.nav-sheet-inner {
+  position: absolute; top: 72px; left: 12px; right: 12px;
+  background: linear-gradient(180deg, var(--bg-2), var(--bg));
+  border: 1px solid var(--line-2); border-radius: var(--r);
+  padding: 0.8rem; display: flex; flex-direction: column; gap: 0.3rem;
+  transform: translateY(-12px); transition: transform 0.3s var(--ease);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+}
+.nav-sheet.show .nav-sheet-inner { transform: none; }
+.nav-sheet-inner a { padding: 0.85rem 1rem; border-radius: 12px; color: var(--ink-soft); font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; }
+.nav-sheet-inner a:hover, .nav-sheet-inner a.active { background: var(--panel); color: var(--ink); }
+
+@media (max-width: 760px) {
+  .nav-links .hide-sm { display: none; }
+  .nav-burger { display: block; }
+}
+@media (min-width: 761px) { .nav-sheet { display: none; } }
+
+/* keyboard focus visibility */
+a:focus-visible, button:focus-visible, .field:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--c4);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
 
 /* ---------------- scroll progress ---------------- */
 .progress { position: fixed; top: 0; left: 0; height: 3px; z-index: 200; background: var(--grad); box-shadow: 0 0 14px rgba(168,85,247,0.7); }

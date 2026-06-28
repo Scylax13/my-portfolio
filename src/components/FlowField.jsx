@@ -14,6 +14,7 @@ const FlowField = () => {
     let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
     let particles = [];
     let raf = 0;
+    let visible = true;
     const pointer = { x: -9999, y: -9999 };
 
     const COLORS = ['#22d3ee', '#6366f1', '#a855f7', '#ec4899'];
@@ -45,6 +46,7 @@ const FlowField = () => {
 
     let t = 0;
     const draw = () => {
+      if (!visible) return;
       t += 0.0016;
       // fade previous frame for trails
       ctx.fillStyle = 'rgba(7, 6, 15, 0.075)';
@@ -87,6 +89,14 @@ const FlowField = () => {
     window.addEventListener('mousemove', onMove);
     window.addEventListener('mouseout', onLeave);
 
+    // Pause the animation loop when the hero scrolls out of view (saves CPU/battery).
+    const vis = new IntersectionObserver(([e]) => {
+      const wasVisible = visible;
+      visible = e.isIntersecting;
+      if (visible && !wasVisible && !reduce) { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); }
+    }, { threshold: 0 });
+    vis.observe(canvas);
+
     if (reduce) {
       // single static frame
       ctx.fillStyle = 'rgba(7,6,15,1)';
@@ -101,6 +111,7 @@ const FlowField = () => {
 
     return () => {
       cancelAnimationFrame(raf);
+      vis.disconnect();
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseout', onLeave);

@@ -10,8 +10,7 @@ const SOCIALS = [
 const EMAIL = 'pratapabhi1999@gmail.com';
 
 const ContactSection = () => {
-  const [sending, setSending] = useState(false);
-  const [status, setStatus] = useState(null); // 'ok' | 'err'
+  const [status, setStatus] = useState(null); // 'ok'
   const [copied, setCopied] = useState(false);
 
   const copyEmail = async () => {
@@ -33,20 +32,23 @@ const ContactSection = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    setSending(true);
-    setStatus(null);
+    const form = e.target;
+    const data = new FormData(form);
+    data.append('_subject', (data.get('subject') || 'New portfolio enquiry').toString());
+    data.append('_template', 'table');
+    data.append('_captcha', 'false');
+    setStatus('sending');
     try {
-      const res = await fetch('https://formspree.io/f/xdoqzqzq', {
+      const res = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
         method: 'POST',
         headers: { Accept: 'application/json' },
-        body: new FormData(e.target),
+        body: data,
       });
-      if (res.ok) { setStatus('ok'); e.target.reset(); }
+      if (res.ok) { setStatus('ok'); form.reset(); }
       else setStatus('err');
     } catch {
       setStatus('err');
     }
-    setSending(false);
   };
 
   return (
@@ -93,15 +95,28 @@ const ContactSection = () => {
           </div>
 
           <form className="card spot reveal" data-delay="120" onSubmit={submit}>
-            {status === 'ok' && <div className="toast ok">Message sent — I'll be in touch soon.</div>}
-            {status === 'err' && <div className="toast err">Something went wrong. Try email instead.</div>}
+            {status === 'ok' && (
+              <div className="toast ok">Message sent — thanks! I'll get back to you soon.</div>
+            )}
+            {status === 'err' && (
+              <div className="toast err" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem' }}>
+                <span>Couldn't send right now — email me directly:</span>
+                <button type="button" className="chip" onClick={copyEmail}>
+                  {copied ? '✓ copied' : `⧉ ${EMAIL}`}
+                </button>
+              </div>
+            )}
             <div style={{ display: 'grid', gap: '0.9rem' }}>
-              <input className="field" name="name" placeholder="Your name" required />
-              <input className="field" type="email" name="email" placeholder="Your email" required />
-              <input className="field" name="subject" placeholder="Subject" required />
-              <textarea className="field" name="message" rows={5} placeholder="Tell me about your project…" required />
-              <button className="btn magnetic" type="submit" disabled={sending} style={{ justifyContent: 'center' }}>
-                {sending ? 'sending…' : 'send message →'}
+              <label className="sr-only" htmlFor="cf-name">Your name</label>
+              <input id="cf-name" className="field" name="name" placeholder="Your name" autoComplete="name" required />
+              <label className="sr-only" htmlFor="cf-email">Your email</label>
+              <input id="cf-email" className="field" type="email" name="email" placeholder="Your email" autoComplete="email" required />
+              <label className="sr-only" htmlFor="cf-subject">Subject</label>
+              <input id="cf-subject" className="field" name="subject" placeholder="Subject" required />
+              <label className="sr-only" htmlFor="cf-message">Message</label>
+              <textarea id="cf-message" className="field" name="message" rows={5} placeholder="Tell me about your project…" required />
+              <button className="btn magnetic" type="submit" disabled={status === 'sending'} style={{ justifyContent: 'center', opacity: status === 'sending' ? 0.7 : 1 }}>
+                {status === 'sending' ? 'sending…' : 'send message →'}
               </button>
             </div>
           </form>
