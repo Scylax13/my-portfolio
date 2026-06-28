@@ -7,9 +7,29 @@ const SOCIALS = [
   { label: 'email', url: 'mailto:pratapabhi1999@gmail.com' },
 ];
 
+const EMAIL = 'pratapabhi1999@gmail.com';
+
 const ContactSection = () => {
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState(null); // 'ok' | 'err'
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = EMAIL;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch { /* ignore */ }
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
 
   const submit = async (e) => {
     e.preventDefault();
@@ -41,17 +61,34 @@ const ContactSection = () => {
               applied LLM products. Drop a message — I reply fast.
             </p>
             <div style={{ marginBottom: '1.6rem' }}>
-              <a href="mailto:pratapabhi1999@gmail.com" className="gtext mono" style={{ fontSize: '1.1rem' }}>
-                pratapabhi1999@gmail.com
-              </a>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', flexWrap: 'wrap' }}>
+                <a href={`mailto:${EMAIL}`} className="gtext mono" style={{ fontSize: '1.1rem' }}>
+                  {EMAIL}
+                </a>
+                <button type="button" className="chip" onClick={copyEmail} aria-label="Copy email address">
+                  {copied ? '✓ copied' : '⧉ copy'}
+                </button>
+              </div>
               <div className="muted mono" style={{ fontSize: '0.9rem', marginTop: '0.4rem' }}>
-                +91 79851 02382 · Mumbai, India
+                +91 79851 02382 · Noida, India
               </div>
             </div>
             <div className="socials">
-              {SOCIALS.map((s) => (
-                <a className="social" key={s.label} href={s.url} target="_blank" rel="noreferrer">↗ {s.label}</a>
-              ))}
+              {SOCIALS.map((s) => {
+                const isMail = s.url.startsWith('mailto:');
+                if (isMail) {
+                  return (
+                    <button type="button" className="social" key={s.label} onClick={copyEmail}>
+                      {copied ? '✓ email copied' : '✉ email'}
+                    </button>
+                  );
+                }
+                return (
+                  <a className="social" key={s.label} href={s.url} target="_blank" rel="noreferrer">
+                    ↗ {s.label}
+                  </a>
+                );
+              })}
             </div>
           </div>
 
