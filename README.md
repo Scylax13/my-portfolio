@@ -1,6 +1,6 @@
 # Abhinav Singh Portfolio
 
-A personal portfolio website built with React and Vite. It highlights Abhinav Singh's profile, skills, projects, experience, resume, and contact details in a polished responsive interface with dark and light theme support.
+A personal portfolio website built with React and Vite. It highlights my profile, skills, projects, experience, resume, and contact details in a polished responsive interface with dark and light theme support.
 
 ## Features
 
